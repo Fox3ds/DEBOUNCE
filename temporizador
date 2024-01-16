@@ -46,7 +46,7 @@ int main(void)
 	// Configuração
 		RCC->AHB1ENR |= (RCC_AHB1ENR_GPIOCEN|RCC_AHB1ENR_GPIOBEN|RCC_AHB1ENR_GPIOAEN);      // Ligando clock de todos os GPIOs
 
-		RCC->APB2ENR |= (RCC_APB2ENR_TIM10EN|RCC_APB2ENR_TIM11EN);
+		RCC->APB2ENR |= (RCC_APB2ENR_TIM10EN|RCC_APB2ENR_TIM11EN|RCC_APB2ENR_TIM9EN);
 
 
 
@@ -55,8 +55,12 @@ int main(void)
 		TIM10->CR1 = TIM_CR1_CEN|TIM_CR1_ARPE;
 
 		TIM11->PSC=(16000);
-		TIM11->ARR=(1000);
+		TIM11->ARR=(5);
 		TIM11->CR1 = TIM_CR1_CEN|TIM_CR1_ARPE;
+
+		TIM9->PSC=(16000);
+		TIM9->ARR=(1000);
+		TIM9->CR1 = TIM_CR1_CEN|TIM_CR1_ARPE;
 
 
 
@@ -104,10 +108,10 @@ int main(void)
 
 
 
-	 	 if(TIM10->SR & TIM_SR_UIF)
+	 	 if(TIM11->SR & TIM_SR_UIF)
 	 	 {
 
-	 		TIM10->SR&=~TIM_SR_UIF;
+	 		TIM11->SR&=~TIM_SR_UIF;
 
 	 		 super_sensor[NOW] = GPIOA->IDR & BOTAO2;
 
@@ -124,9 +128,9 @@ int main(void)
 
 	 	 if(pop != 0)
 	 	 {
-	 		if(TIM11->SR & TIM_SR_UIF)
+	 		if(TIM9->SR & TIM_SR_UIF)
 	 		{
-	 			TIM11->SR &= ~TIM_SR_UIF;
+	 			TIM9->SR &= ~TIM_SR_UIF;
 
 	 			if(conta > 0)
 	 			{
@@ -141,10 +145,6 @@ int main(void)
 	 		 GPIOB->ODR = LED1;
 	 		 pop = 0;
 	 	 }
-
-
-
-
 
 	 	  GPIOC->ODR = decod[conta];
 
