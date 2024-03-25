@@ -462,9 +462,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//UTILIZA PARA PUXAR 
 	if(htim->Instance==TIM11)
 	{
 
-
-
-				  sensor[AGR] = HAL_GPIO_ReadPin(BOTAU1_GPIO_Port, BOTAU1_Pin);
+				 sensor[AGR] = HAL_GPIO_ReadPin(BOTAU1_GPIO_Port, BOTAU1_Pin);
 
 				  if(sensor[AGR] == 0 && sensor[ANTES] != 0)
 				  {
@@ -475,8 +473,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//UTILIZA PARA PUXAR 
 				  }
 
 				  sensor[ANTES] = sensor[AGR];
-
-
 
 			  if(conta)
 			  {
