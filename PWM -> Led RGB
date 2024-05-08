@@ -147,7 +147,7 @@ int main(void)
 	  if(viraR==1)
 	  {
 		  HAL_TIM_PWM_Start_IT(&htim4, TIM_CHANNEL_1);
-		  __HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 1000-1);
+		  __HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_1, 0.375*1000-1);
 	  }
 	  else{
 		  HAL_TIM_PWM_Stop_IT(&htim4, TIM_CHANNEL_1);
@@ -156,6 +156,7 @@ int main(void)
 	  if(viraB==1)
 	  {
 		  HAL_TIM_PWM_Start_IT(&htim4, TIM_CHANNEL_2);
+		  __HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_2, 1000-1);
 	  }
 	  else{
 	  	HAL_TIM_PWM_Stop_IT(&htim4, TIM_CHANNEL_2);
@@ -164,7 +165,7 @@ int main(void)
 	  if(viraG==1)
 	  {
 	  	HAL_TIM_PWM_Start_IT(&htim4, TIM_CHANNEL_3);
-	  	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_3, 0.0125*1000-1);
+	  	__HAL_TIM_SET_COMPARE(&htim4, TIM_CHANNEL_3, 0.225*1000-1);
 	  }
 	  else{
 	  	 HAL_TIM_PWM_Stop_IT(&htim4, TIM_CHANNEL_3);
